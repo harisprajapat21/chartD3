@@ -7,7 +7,6 @@ import { MarketPrice } from './service/market-price';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'chartD3';
   marketStatus: MarketPrice[] | undefined;
   marketStatusToPlot: MarketPrice[] | undefined;
   langData:any;

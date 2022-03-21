@@ -1,15 +1,24 @@
-<h1>{{title}}</h1>
-<div class="container-fluid p-4" style="background-color: #d2e3ba;">
-<mdb-carousel class="carousel slide carousel-fade" [interval]="15000" [animation]="'fade'" [isControls]="true" [noPause]="false" [noWrap]="false" (activeSlideChange)="onActiveSlideChange($event)">
-  <mdb-carousel-item>
-    <app-line-chart
-          [marketStatus]="marketStatusToPlot"
-        ></app-line-chart>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <app-bar [langData]="langData"></app-bar>
-  </mdb-carousel-item>
-  
-</mdb-carousel>
+<div class="container-fluid p-4" style="background-color: #d2e3ba">
+  <mdb-carousel
+    class="carousel slide carousel-fade"
+    [interval]="15000"
+    [animation]="'fade'"
+    [isControls]="true"
+    [noPause]="false"
+    [noWrap]="false"
+    (activeSlideChange)="onActiveSlideChange($event)"
+  >
+    <mdb-carousel-item>
+      <app-line-chart [marketStatus]="marketStatusToPlot"></app-line-chart>
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <div *ngIf="langData">
+        <app-bar [langData]="langData"></app-bar>
+      </div>
+    </mdb-carousel-item>
+  </mdb-carousel>
 </div>
-<h3 class="text-secondary fw-bold">Slide will change in {{slideTimeLeft}}s</h3>
+
+<h3 class="text-secondary fw-bold">
+  Slide will change in {{ slideTimeLeft }}s
+</h3>

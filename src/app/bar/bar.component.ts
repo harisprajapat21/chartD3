@@ -6,7 +6,7 @@ import * as d3 from 'd3';
   styleUrls: ['./bar.component.scss'],
 })
 export class BarComponent implements OnInit {
-  @Input() langData: any;
+  @Input() langData:any | undefined;
   private svg: any;
   private margin = 50;
   private width = 750 - this.margin * 2;
@@ -28,13 +28,13 @@ export class BarComponent implements OnInit {
   }
   private drawBars(data: any[]): void {
     // Create the X-axis band scale
-    if (!data) {
-      return;
+    if(!data){
+      return
     }
     const x = d3
       .scaleBand()
       .range([0, this.width])
-      .domain(data.map((d) => d.Framework))
+      .domain(data.map((d:any) => d.Framework))
       .padding(0.2);
 
     // Draw the X-axis on the DOM
@@ -58,10 +58,10 @@ export class BarComponent implements OnInit {
       .data(data)
       .enter()
       .append('rect')
-      .attr('x', (d: any) => x(d.Framework))
-      .attr('y', (d: any) => y(d.Stars))
+      .attr('x', (d:any) => x(d.Framework))
+      .attr('y', (d:any) => y(d.Stars))
       .attr('width', x.bandwidth())
-      .attr('height', (d: any) => this.height - y(d.Stars))
+      .attr('height', (d:any) => this.height - y(d.Stars))
       .attr('fill', '#d04a35');
   }
 }
